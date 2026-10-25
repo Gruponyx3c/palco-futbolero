@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Cómo funciona · Palco Futbolero</title>
+<meta name="description" content="Guía rápida para armar la sala, compartir el partido y entrar con tus amigos.">
+<meta name="theme-color" content="#08150f">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Figtree:wght@400;500;600;700&family=Saira+Extra+Condensed:wght@700;800&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/ayuda.css">
+</head>
+<body>
+
+<header class="site wrap">
+  <a class="logo" href="./"><img src="img/logo.svg" alt=""><b>Palco <span>Futbolero</span></b></a>
+  <nav class="nav">
+    <a href="./">Sala</a>
+    <a href="ayuda.html" aria-current="page">Cómo funciona</a>
+  </nav>
+</header>
+
+<main class="wrap guide">
+
+  <!-- PORTADA -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="kicker">Guía rápida · 2 minutos</span>
+      <h1>Así se arma <span>la previa</span></h1>
+      <p>Una persona pone el partido y lo comparte desde su computadora. Los demás entran con un link. Todos se escuchan por micrófono, chatean y ven el mismo marcador.</p>
+      <div class="jump">
+        <a class="btn primary" href="#anfitrion">Voy a poner el partido</a>
+        <a class="btn" href="#invitado">Me invitaron</a>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="pitch">
+        <svg viewBox="0 0 105 68" preserveAspectRatio="none" fill="none" stroke="rgba(255,255,255,.38)" stroke-width=".4">
+          <rect x="0" y="0" width="105" height="68"/><line x1="52.5" y1="0" x2="52.5" y2="68"/>
+          <circle cx="52.5" cy="34" r="9.15"/><rect x="0" y="13.84" width="16.5" height="40.32"/>
+          <rect x="88.5" y="13.84" width="16.5" height="40.32"/>
+        </svg>
+      </div>
+      <div class="bug">
+        <div class="t">EMC</div><div class="s">2</div><div class="sep">-</div><div class="s">1</div><div class="t">BSC</div>
+        <div class="clock">78:14</div><div class="half">2T</div>
+      </div>
+      <div class="mock-chat">
+        <div><b>Andrés:</b> ¿Viste esa jugada?</div>
+        <div><b>Majo:</b> Era penal clarísimo</div>
+      </div>
+      <div class="mock-react">¡GOL!<small>Carlos</small></div>
+      <div class="mock-react r2">¡ÁRBITRO!<small>Majo</small></div>
+    </div>
+  </section>
+
+  <!-- QUÉ NECESITAN -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="kicker">Antes del pitazo</span>
+      <h2>Qué necesitan</h2>
+    </div>
+    <div class="needs">
+      <div class="card need">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
+        <h3>Una computadora</h3>
+        <p>Solo para el anfitrión, con Chrome o Edge. Desde el celular no se puede compartir pantalla.</p>
+      </div>
+      <div class="card need">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        <h3>Cualquier equipo</h3>
+        <p>Los invitados pueden entrar desde computadora o celular, con el navegador que tengan.</p>
+      </div>
+      <div class="card need">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>
+        <h3>Audífonos</h3>
+        <p>Así el sonido del partido no se mete por los micrófonos y no hay eco.</p>
+      </div>
+      <div class="card need">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg>
+        <h3>Buen internet</h3>
+        <p>El anfitrión envía el video a cada amigo, así que pesa más su internet de subida. Funciona mejor con 5 o 6 personas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANFITRIÓN -->
+  <section class="sec" id="anfitrion">
+    <div class="sec-head">
+      <span class="kicker">Si vas a poner el partido</span>
+      <h2>Para el anfitrión</h2>
+      <p>Hazlo unos 10 minutos antes de que empiece, para tener tiempo de probar el sonido con todos.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div class="step-body">
+          <h3>Crea la sala</h3>
+          <p>Abre Palco Futbolero, escribe tu nombre y presiona <span class="ui on">Crear sala</span>. El navegador te pedirá permiso para usar el <b>micrófono</b>: presiona <b>Permitir</b>.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-body">
+          <h3>Invita a tus amigos</h3>
+          <p>Presiona <span class="ui">Copiar invitación</span> y pégala en el grupo de WhatsApp. Ya trae el link y el código de 5 letras, así que tus amigos solo tienen que abrirlo.</p>
+          <p>Cada vez que alguien llega, te aparece en <b>Quieren entrar</b> con su nombre. Presiona <span class="ui on">Aceptar</span> solo si lo conoces. Nadie ve ni escucha nada hasta que lo aceptes. Cuando ya estén todos, presiona <span class="ui">Cerrar la sala</span> y nadie más podrá pedir entrar.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-body">
+          <h3>Abre el partido en otra pestaña</h3>
+          <p>En una pestaña nueva abre la página o servicio donde ves el partido y dale play. Deja la sala abierta en su propia pestaña.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-body">
+          <h3>Comparte la pestaña con audio</h3>
+          <p>Vuelve a la sala y presiona <span class="ui on">Compartir partido</span>. Se abre un cuadro como este. Elige <b>Pestaña de Chrome</b>, selecciona la pestaña del partido y activa <b>Compartir también el audio de la pestaña</b>. Sin eso, tus amigos verán el partido pero no lo escucharán.</p>
+          <div class="dialog" aria-label="Ejemplo del cuadro para compartir de Chrome">
+            <div class="dt">Elige qué compartir</div>
+            <div class="tabs"><span class="sel">Pestaña de Chrome</span><span>Ventana</span><span>Pantalla completa</span></div>
+            <div class="list">
+              <div class="item sel"><i></i>Partido en vivo</div>
+              <div class="item"><i></i>WhatsApp</div>
+              <div class="item"><i></i>Correo</div>
+            </div>
+            <div class="audio"><span>Compartir también el audio de la pestaña</span><span class="toggle"></span></div>
+            <div class="acts"><span>Cancelar</span><span class="go">Compartir</span></div>
+          </div>
+          <p class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+            Si eliges Ventana o Pantalla completa, en Windows a veces no aparece la opción de audio. La pestaña es la opción segura.
+          </p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-body">
+          <h3>Lleva el marcador</h3>
+          <p>Debajo de la pantalla está tu panel. Escribe los equipos, presiona <span class="ui on">Iniciar reloj</span> con el pitazo y suma los goles con <span class="ui">+</span> o con las teclas <kbd>1</kbd> y <kbd>2</kbd>. A todos les aparece el ¡GOOOL! al mismo tiempo.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- INVITADO -->
+  <section class="sec" id="invitado">
+    <div class="sec-head">
+      <span class="kicker">Si te mandaron el link</span>
+      <h2>Para los invitados</h2>
+      <p>No hay que instalar nada ni crear cuenta.</p>
+    </div>
+    <div class="trio">
+      <div class="card">
+        <span class="n">PASO 1</span>
+        <h3>Abre la invitación</h3>
+        <p>Toca el link que te mandaron. El código de la sala ya aparece escrito. Si solo te pasaron el código, escríbelo en la casilla de Me invitaron.</p>
+      </div>
+      <div class="card">
+        <span class="n">PASO 2</span>
+        <h3>Pon tu nombre y espera</h3>
+        <p>Escribe tu nombre real para que el anfitrión te reconozca y presiona <span class="ui on">Entrar</span>. Espera unos segundos a que te acepte. Acepta el micrófono si quieres hablar.</p>
+      </div>
+      <div class="card">
+        <span class="n">PASO 3</span>
+        <h3>Activa el sonido</h3>
+        <p>Si el partido aparece pero no se escucha, toca <span class="ui on">Activar sonido</span> en la esquina de la pantalla. Algunos celulares lo piden la primera vez.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROLES -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="kicker">Durante el partido</span>
+      <h2>Qué hace cada botón</h2>
+    </div>
+    <div class="controls">
+      <div class="control"><h3>Micrófono <span class="who">Todos</span></h3><p>Préndelo o apágalo cuando quieras. En rojo significa que nadie te escucha.</p></div>
+      <div class="control"><h3>Reacciones <span class="who">Todos</span></h3><p>¡Gol!, ¡Uff!, ¡Penal! y ¡Árbitro! aparecen flotando sobre la pantalla de todos, con tu nombre.</p></div>
+      <div class="control"><h3>Chat <span class="who">Todos</span></h3><p>Para comentar sin interrumpir la narración. Los mensajes no se guardan al cerrar la sala.</p></div>
+      <div class="control"><h3>Pantalla completa <span class="who">Todos</span></h3><p>Agranda solo el partido con el marcador. Sal con <kbd>Esc</kbd> o presiona <kbd>F</kbd> otra vez.</p></div>
+      <div class="control"><h3>Volumen <span class="who">Todos</span></h3><p>Baja el partido sin bajar las voces de tus amigos.</p></div>
+      <div class="control"><h3>Sala de espera <span class="who h">Anfitrión</span></h3><p>Cada persona que llega pide permiso. Tú decides si entra con Aceptar o Rechazar.</p></div>
+      <div class="control"><h3>Cerrar la sala <span class="who h">Anfitrión</span></h3><p>Cuando ya llegaron todos, ciérrala. Nadie más puede pedir entrar, aunque tenga el código.</p></div>
+      <div class="control"><h3>Silenciar y sacar <span class="who h">Anfitrión</span></h3><p>Al lado de cada nombre. Silenciar deja a esa persona sin voz para todos. Sacar la expulsa al instante.</p></div>
+      <div class="control"><h3>Marcador y reloj <span class="who h">Anfitrión</span></h3><p>Goles con <kbd>1</kbd> y <kbd>2</kbd>, reloj con pausa, segundo tiempo desde el minuto 45 y ajustes de ±1 minuto.</p></div>
+    </div>
+  </section>
+
+  <!-- PROBLEMAS -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="kicker">Si algo falla</span>
+      <h2>Problemas comunes</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Mis amigos ven el partido pero no lo escuchan</summary>
+        <div><p>Compartiste sin el audio de la pestaña. Presiona Dejar de compartir, luego Compartir partido otra vez, y esta vez activa Compartir también el audio de la pestaña.</p></div>
+      </details>
+      <details>
+        <summary>Hay eco o se escucha el partido dos veces</summary>
+        <div><p>Alguien tiene los parlantes encendidos y su micrófono está captando el partido. Pídele que use audífonos o que apague su micrófono.</p></div>
+      </details>
+      <details>
+        <summary>Dice "No encontramos la sala"</summary>
+        <div><p>Revisa que el código esté bien escrito. Si el anfitrión cerró la pestaña o recargó la página, la sala se borró. Tiene que crear una nueva y mandar la invitación otra vez.</p></div>
+      </details>
+      <details>
+        <summary>Me quedé en "Esperando que te deje entrar"</summary>
+        <div><p>El anfitrión todavía no te acepta. Avísale por WhatsApp para que revise la lista Quieren entrar. Si te dice "sala cerrada", pídele que la abra un momento.</p></div>
+      </details>
+      <details>
+        <summary>A uno de mis amigos no le carga el video</summary>
+        <div><p>Algunas redes muy cerradas, como las de oficinas o universidades, bloquean este tipo de conexión directa. Que pruebe con los datos del celular o con otro wifi.</p></div>
+      </details>
+      <details>
+        <summary>El video se ve cortado o con poca calidad</summary>
+        <div><p>Casi siempre es el internet de subida del anfitrión. Cierra descargas y otras pestañas con video, conéctate por cable si puedes, o invita a menos personas.</p></div>
+      </details>
+      <details>
+        <summary>No me aparece el botón Compartir partido</summary>
+        <div><p>Solo lo ve el anfitrión, y solo en un navegador que permite compartir pantalla. Usa Chrome o Edge desde una computadora.</p></div>
+      </details>
+      <details>
+        <summary>¿Alguien más puede ver nuestra sala?</summary>
+        <div><p>No. Aunque alguien consiga el código, solo puede pedir entrar: el anfitrión tiene que aceptarlo, y mientras espera no ve ni escucha nada. Además, el anfitrión puede cerrar la sala, silenciar o sacar a cualquiera.</p><p>El video y las voces van directo entre sus equipos y no se graban en ningún lado. Igual, manda la invitación solo a tus amigos y no la publiques en redes.</p></div>
+      </details>
+    </div>
+  </section>
+
+  <section class="final">
+    <div>
+      <h2>¿Listos para el pitazo?</h2>
+      <p>Crea la sala, manda la invitación y a disfrutar el partido.</p>
+    </div>
+    <a class="btn primary" href="./">Ir a la sala</a>
+  </section>
+</main>
+
+<footer class="wrap site-foot">
+  <span>Palco Futbolero</span>
+  <span>Para ver el partido con los panas.</span>
+</footer>
+</body>
+</html>

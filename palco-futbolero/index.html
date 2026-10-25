@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' blob: mediastream:; connect-src 'self' https://0.peerjs.com wss://0.peerjs.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Palco Futbolero</title>
+<meta name="description" content="Una sala para ver el partido con tus amigos: pantalla compartida, voz, chat y marcador en vivo.">
+<meta name="theme-color" content="#08150f">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Figtree:wght@400;500;600;700&family=Saira+Extra+Condensed:wght@700;800&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/sala.css">
+<!-- Copia local de PeerJS (opcional, ver README). Si no está, sala.js usa la de unpkg. -->
+<script src="js/peerjs.min.js"></script>
+</head>
+<body>
+
+<header class="site wrap">
+  <a class="logo" href="./"><img src="img/logo.svg" alt=""><b>Palco <span>Futbolero</span></b></a>
+  <nav class="nav">
+    <a href="./" aria-current="page">Sala</a>
+    <a href="ayuda.html">Cómo funciona</a>
+  </nav>
+</header>
+
+<!-- ================= LOBBY ================= -->
+<main class="lobby" id="lobby">
+  <section class="lobby-hero">
+    <span class="kicker">Previa del partido</span>
+    <h1>Mira el partido <span>con los panas</span></h1>
+    <p>Uno pone el partido y lo comparte. Los demás piden entrar con un código de 5 letras y el anfitrión los acepta. Todos se escuchan, chatean y ven el mismo marcador en vivo.</p>
+  </section>
+
+  <section class="card">
+    <label class="label" for="name">Tu nombre</label>
+    <input type="text" id="name" maxlength="24" placeholder="Ej. Carlos" autocomplete="nickname">
+  </section>
+
+  <div class="choices">
+    <section class="card choice">
+      <span class="kicker">Anfitrión</span>
+      <h2>Yo pongo el partido</h2>
+      <p>Creas la sala desde tu computadora y les mandas la invitación a tus amigos.</p>
+      <button class="primary" id="createBtn">Crear sala</button>
+    </section>
+    <section class="card choice">
+      <span class="kicker">Invitado</span>
+      <h2>Me invitaron</h2>
+      <p>Escribe el código que te mandaron. Si abriste el link de invitación, ya está puesto.</p>
+      <form class="join" id="joinForm">
+        <input type="text" id="codeIn" maxlength="5" placeholder="CÓDIGO" aria-label="Código de la sala" autocomplete="off">
+        <button class="primary" type="submit">Entrar</button>
+      </form>
+    </section>
+  </div>
+
+  <div class="msg" id="lobbyMsg" hidden></div>
+
+  <section class="card">
+    <p class="label">Antes de empezar</p>
+    <div class="tips">
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
+        <div><b>Chrome o Edge en computadora</b>El anfitrión lo necesita para compartir. Los invitados pueden entrar desde el celular.</div>
+      </div>
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>
+        <div><b>Usen audífonos</b>Así el sonido del partido no rebota por los micrófonos.</div>
+      </div>
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+        <div><b>¿Primera vez?</b>Revisa <a href="ayuda.html">cómo funciona</a> en 2 minutos.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= SALA ================= -->
+<main class="wrap" id="room" hidden>
+  <div class="room-top">
+    <div>
+      <span class="kicker" id="roleTag">En la sala</span>
+    </div>
+    <div class="code">
+      <div class="code-box"><span class="label">Código</span><b id="codeOut">-----</b></div>
+      <button id="inviteBtn">Copiar invitación</button>
+      <button id="lockBtn" hidden>Cerrar la sala</button>
+      <button id="leaveBtn">Salir</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="stage" id="stage">
+        <div class="pitch" id="pitch">
+          <svg viewBox="0 0 105 68" preserveAspectRatio="none" fill="none" stroke="rgba(255,255,255,.38)" stroke-width=".4" aria-hidden="true">
+            <rect x="0" y="0" width="105" height="68"/><line x1="52.5" y1="0" x2="52.5" y2="68"/>
+            <circle cx="52.5" cy="34" r="9.15"/><rect x="0" y="13.84" width="16.5" height="40.32"/>
+            <rect x="88.5" y="13.84" width="16.5" height="40.32"/><rect x="0" y="24.84" width="5.5" height="18.32"/>
+            <rect x="99.5" y="24.84" width="5.5" height="18.32"/>
+          </svg>
+          <div class="wait">
+            <strong id="waitTitle">Esperando el partido</strong>
+            <p id="waitText">Cuando el anfitrión comparta la pestaña del partido, aparecerá aquí.</p>
+          </div>
+        </div>
+        <video id="screen" hidden playsinline autoplay></video>
+        <button class="primary unmute" id="unmuteBtn" hidden>Activar sonido</button>
+        <div class="bug" id="bug" aria-label="Marcador">
+          <div class="t" id="bHome">BAR</div><div class="s" id="bHs">0</div><div class="sep">-</div>
+          <div class="s" id="bAs">0</div><div class="t" id="bAway">RMA</div>
+          <div class="clock" id="bClock">00:00</div><div class="half" id="bHalf">1T</div>
+        </div>
+        <div class="goal" id="goal"><span>¡GOOOL!</span></div>
+        <div class="reacts" id="reacts"></div>
+      </div>
+
+      <div class="bar">
+        <button id="micBtn">Micrófono activo</button>
+        <button class="primary" id="shareBtn" hidden>Compartir partido</button>
+        <button id="fsBtn">Pantalla completa</button>
+        <span class="grow"></span>
+        <div class="reactions">
+          <button data-r="¡GOL!">¡Gol!</button>
+          <button data-r="¡UFF!">¡Uff!</button>
+          <button data-r="¡PENAL!">¡Penal!</button>
+          <button data-r="¡ÁRBITRO!">¡Árbitro!</button>
+        </div>
+        <label class="vol" for="vol">Volumen <input type="range" id="vol" min="0" max="1" step="0.05" value="1"></label>
+      </div>
+
+      <div class="hostcard" id="hostPanel" hidden>
+        <section class="card">
+          <p class="label">Marcador · lo ven todos</p>
+          <div class="team">
+            <input type="text" id="home" value="Barcelona" aria-label="Equipo local">
+            <button data-g="h" data-d="-1" aria-label="Quitar gol local">−</button>
+            <div class="num" id="hs">0</div>
+            <button data-g="h" data-d="1" class="primary" aria-label="Gol local">+</button>
+          </div>
+          <div class="team">
+            <input type="text" id="away" value="Real Madrid" aria-label="Equipo visitante">
+            <button data-g="a" data-d="-1" aria-label="Quitar gol visitante">−</button>
+            <div class="num" id="as">0</div>
+            <button data-g="a" data-d="1" class="primary" aria-label="Gol visitante">+</button>
+          </div>
+        </section>
+        <section class="card">
+          <p class="label">Reloj del partido</p>
+          <div class="row">
+            <button class="primary" id="clockBtn">Iniciar reloj</button>
+            <button id="halfBtn">2.º tiempo</button>
+            <button id="minus">−1 min</button>
+            <button id="plus">+1 min</button>
+          </div>
+          <div class="row">
+            <button id="resetBtn">Reiniciar marcador</button>
+            <span class="keys"><kbd>1</kbd> gol local · <kbd>2</kbd> gol visitante · <kbd>F</kbd> pantalla completa</span>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <aside class="side">
+      <section class="card pending-card" id="pendingCard" hidden>
+        <p class="label">Quieren entrar</p>
+        <ul class="people pending" id="pending"></ul>
+        <p class="muted small">Acepta solo a quien conozcas.</p>
+      </section>
+      <section class="card">
+        <p class="label">En la sala</p>
+        <ul class="people" id="people"></ul>
+        <p class="msg small" id="mutedNote" hidden>El anfitrión te silenció. Puedes seguir viendo y escribiendo en el chat.</p>
+      </section>
+      <section class="card chat">
+        <p class="label">Chat</p>
+        <div class="log" id="log" aria-live="polite"></div>
+        <form id="chatForm">
+          <input type="text" id="chatIn" maxlength="300" placeholder="Escribe algo…" autocomplete="off" aria-label="Mensaje">
+          <button class="primary" type="submit">Enviar</button>
+        </form>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<script src="js/sala.js"></script>
+</body>
+</html>
